@@ -5,6 +5,17 @@ import { verifyBearerToken } from "./middleware/auth.js";
 dotenv.config();
 
 const app = express();
+
+// Enable CORS for all origins
+app.use(cors());
+
+// Optional: If you want more control
+app.use(cors({
+  origin: "*", 
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
 app.get("/api/google-reviews/:city", verifyBearerToken, async (req, res) => {
   const { city } = req.params;
 
@@ -63,3 +74,4 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
