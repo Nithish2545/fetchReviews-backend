@@ -1,6 +1,8 @@
 import express from "express";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
+import cors from "cors";
+
 import { verifyBearerToken } from "./middleware/auth.js";
 dotenv.config();
 
@@ -74,4 +76,5 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
 
